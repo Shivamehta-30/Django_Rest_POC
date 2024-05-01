@@ -1,8 +1,24 @@
-from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
 from app.serlializers import ItemSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Item
+
+def index(request):
+    # Render the HTML template
+    return render(request, 'app/index.html')
+
+def list_items_page(request):
+    return render(request, 'app/items_list.html')
+
+def update_item(request, pk):
+    # Your logic to handle update
+    return JsonResponse({'status': 'success'})
+
+def delete_item(request, pk):
+    # Your logic to handle deletion
+    return JsonResponse({'status': 'success'})
 
 @api_view(['GET'])
 def api_overview(request):
